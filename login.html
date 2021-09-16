@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<style>
+    body{
+        text-align: center;
+    }
+</style>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <meta charset="utf-8">
+    </head>
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <div class="topnav-right">
+          <a class="active" href="login.html">Login</a>
+          <a>Create Account</a>
+        </div>
+    </div>    
+    <h2>Please log in to continue:</h2>
+
+    <form action="/login" method="post" id="login">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <br>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password"><br><br>
+        
+        <input type="submit" value="Submit"><br><br>
+
+    </form><br>
+    <script src="login.js"></script>
+</html>
