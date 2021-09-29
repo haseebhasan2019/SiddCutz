@@ -133,10 +133,17 @@
             console.log(text);
             //Store these availabilities in the appropriate variables
             //Use those variables to see which radio buttons should be displayed
+            //First just display them as a list of dates
         })
         .catch(function (error) {
             console.log(error)
         });
+
+        //create a variable for every time initialized to 0
+        //set that variable to its value
+        //add that variable to the arraylist if its value = 1
+        //loop through an array of times and display them
+
 
         ele = document.getElementById("availabilities");
         ele.innerHTML = "";
