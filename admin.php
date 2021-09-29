@@ -7,7 +7,7 @@
     }
 
     $result = mysqli_query($con,"SELECT * FROM appointment WHERE DATE(date) >= CURDATE() ORDER BY date;");
-    $availability = mysqli_query($con, "SELECT * FROM availability WHERE date BETWEEN CURDATE() AND CURDATE()+14 ORDER BY date");
+    $availability = mysqli_query($con, "SELECT * FROM availability WHERE date >= CURDATE() ORDER BY date;");
 ?>
 <!DOCTYPE html>
 <style>
@@ -92,7 +92,7 @@
                     <td>8:00pm</td>
                 </tr>
                 <tr>
-                    <td><input type="date" name="date" onselect=<?php echo "hi" ?>></td>
+                    <td><input type="date" name="date"></td>
                     <td><input type="checkbox" name="9am" value="1"></td>
                     <td><input type="checkbox" name="10am" value="1"></td>
                     <td><input type="checkbox" name="11am" value="1"></td>
@@ -152,7 +152,6 @@
                                 
                             // }
                         ?>
-                        
 
                         <?php if ($row['9am'] == "2") {echo "<td class='green'></td>";} elseif ($row['9am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
                         <?php if ($row['10am'] == "2") {echo "<td class='green'></td>";} elseif ($row['10am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
@@ -174,132 +173,4 @@
             ?>
         </table>
         <br>
-
-
-        <!-- <table align="center" border="1px">
-            <tr>
-                <th colspan="13"><h2>Availability</h2></th>
-            </tr>
-            <tr>
-                <th></th>
-                <td>9:00am</td>
-                <td>10:00am</td>
-                <td>11:00am</td>
-                <td>12:00pm</td>
-                <td>1:00pm</td>
-                <td>2:00pm</td>
-                <td>3:00pm</td>
-                <td>4:00pm</td>
-                <td>5:00pm</td>
-                <td>6:00pm</td>
-                <td>7:00pm</td>
-                <td>8:00pm</td>
-            </tr>
-            <tr>
-                <td>Monday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Tuesday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Wednesday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Thursday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Friday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Saturday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-            <tr>
-                <td>Sunday</td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-                <td><input type="checkbox" id="check" name="check" value="check"></td>
-            </tr>
-        </table> -->
-
 </html>

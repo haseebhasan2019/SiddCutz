@@ -12,7 +12,7 @@
         echo "$conn->connect_error";
         die('Connection Failed : ' .$conn->connect_error);
     } else {
-        //Change availability
+        //Change availability to appointment in database
         // $sql = "UPDATE `availability` SET `$time`='2' WHERE `date`='$date'";
         // if ($conn->query($sql) === TRUE) {
         //     echo "Successfully updated availability. ";

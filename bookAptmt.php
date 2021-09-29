@@ -122,26 +122,27 @@
     }
     function onDateChange(val)
     {
-        console.log(val)
-        fetch("getAvail.php", {
+        // console.log(val)
+        fetch("getAvail.php?date=" + val, {
             method: 'get',
-            body: val
         })
         .then(function (response) {
             return response.text();
         })
         .then(function (text) {
             console.log(text);
+            //Store these availabilities in the appropriate variables
+            //Use those variables to see which radio buttons should be displayed
         })
         .catch(function (error) {
             console.log(error)
         });
-        return false;
-
 
         ele = document.getElementById("availabilities");
-        // ele.innerHTML = "";
-        // ele.innerHTML += '<ul><li>Hello</li><li>Hi\
+        ele.innerHTML = "";
+        ele.innerHTML += '<ul><li>'+ val+'</li>';
+        // <li>';
+        //Hi
         // </li></ul>';
         // ele.append(<ul><li>hi<li></ul>)
         // ele.insertAdjacentHTML("beforeend", '<input type="radio" id="t" name="t" value="t">' +
@@ -152,6 +153,7 @@
         //     +"'");
         // ele.insertAdjacentHTML('beforeend', '<ul><li>hi<li></ul>')
         // ele.insertAdjacentHTML('beforeend', '<ul><li>hi<li></ul>')
+        return false;
 
     }
 </script>
