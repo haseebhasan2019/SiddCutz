@@ -1,6 +1,7 @@
 <?php
     $name = $_POST['name'];
     $number = $_POST['number'];
+    $email = $_POST['email'];
     $service = $_POST['service'];
     $location = $_POST['location'];
     $date = $_POST['date'];
@@ -12,26 +13,25 @@
         echo "$conn->connect_error";
         die('Connection Failed : ' .$conn->connect_error);
     } else {
-        //Change availability to appointment in database
-        // $sql = "UPDATE `availability` SET `$time`='2' WHERE `date`='$date'";
-        // if ($conn->query($sql) === TRUE) {
-        //     echo "Successfully updated availability. ";
-        //   } else {
-        //     echo "Error updating availability: " . $conn->error;
-        //   }
+        // Change availability to appointment in database
+        $sql = "UPDATE `availability` SET `$time`='2' WHERE `date`='$date'";
+        if ($conn->query($sql) === TRUE) {
+            // echo "Successfully updated availability. ";
+          } else {
+            echo "Error updating availability: " . $conn->error;
+          }
 
 
-        $stmt = $conn->prepare("insert into appointment(name, number, service, location, date, time)
-        values(?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sissss", $name, $number, $service, $location, $date, $time);
+        $stmt = $conn->prepare("insert into appointment(name, number, email, service, location, date, time)
+        values(?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sisssss", $name, $number, $email, $service, $location, $date, $time);
         $stmt->execute();
         // echo "Appointment recorded";
         $stmt->close();
         $conn->close();
         // header('Location: aptmt.php');
         echo '<script>alert("Successfully recorded appointment! Check your email for confirmation.");</script>';
-        echo '<html><body><a href="index.html">Home</a></body></html>'
-   ;
+        echo '<html><body><a href="index.html">Home</a></body></html>';
     }
 ?>
 <Script>
