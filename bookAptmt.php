@@ -69,15 +69,19 @@
         </div>
         <form action="http://localhost/SiddCutz/recordAptmt.php" method="post" style="text-align: center;">
             <label for="name">Name:</label>
-            <input type="text" name="name"><br>
+            <input type="text" name="name" required><br>
             <br>
 
             <label for="number">Phone Number:</label>
-            <input type="text" name="number"><br>
+            <input type="text" name="number" required><br>
+            <br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br>
             <br>
 
             <label for="service">Service:</label><br>
-            <input type="radio" id="a" name="service" value="a">
+            <input type="radio" id="a" name="service" value="a" required>
               <label for="a" style="margin-right: 20px;">A</label>
             <input type="radio" id="b" name="service" value="b">
               <label for="b" style="margin-right: 20px;">B</label>
@@ -88,7 +92,7 @@
             <br>
 
             <label for="location">Location:</label><br>
-            <input type="radio" id="parsippany" name="location" value="parsippany">
+            <input type="radio" id="parsippany" name="location" value="parsippany" required>
               <label for="parsippany">Parsippany, NJ</label><br>
             <input type="radio" id="nb" name="location" value="nb">
               <label for="nb">New Brunswick, NJ</label><br>
@@ -97,17 +101,10 @@
             <br>
             
             <label for="date">Date:</label>
-            <input type="date" name="date" onchange="onDateChange(value)"><br>
-            <!-- <input type="week" name="date"><br> -->
+            <input type="date" name="date" onchange="onDateChange(value)" required><br>
             <br>
 
-            <div id="availabilities">
-            <!-- <p>Content</p> -->
-            </div>
-            <br>
-
-            <label for="time">Time:</label>
-            <input type="time" value="12:00:00" name="time"><br>
+            <div id="availabilities"></div>
             <br>
 
             <input type="submit"><br><br>
@@ -122,7 +119,6 @@
     }
     function onDateChange(val)
     {
-        // console.log(val)
         fetch("getAvail.php?date=" + val, {
             method: 'get',
         })
@@ -130,37 +126,26 @@
             return response.text();
         })
         .then(function (text) {
-            console.log(text);
-            //Store these availabilities in the appropriate variables
-            //Use those variables to see which radio buttons should be displayed
-            //First just display them as a list of dates
+            ele = document.getElementById("availabilities");
+            ele.innerHTML = "";
+            const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
+            const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+
+            for (let i = 0; i < text.length; i++)
+            {
+                if (text[i] == 1)
+                {
+                    ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
+                    ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>'
+                }            
+            }
         })
         .catch(function (error) {
             console.log(error)
         });
 
-        //create a variable for every time initialized to 0
-        //set that variable to its value
-        //add that variable to the arraylist if its value = 1
-        //loop through an array of times and display them
-
-
-        ele = document.getElementById("availabilities");
-        ele.innerHTML = "";
-        ele.innerHTML += '<ul><li>'+ val+'</li>';
-        // <li>';
-        //Hi
-        // </li></ul>';
-        // ele.append(<ul><li>hi<li></ul>)
-        // ele.insertAdjacentHTML("beforeend", '<input type="radio" id="t" name="t" value="t">' +
-        // $x = 0;
-        // while ($x < 3){
-        //     echo '<p>$x</p>';
-        //     $x++;}
-        //     +"'");
-        // ele.insertAdjacentHTML('beforeend', '<ul><li>hi<li></ul>')
-        // ele.insertAdjacentHTML('beforeend', '<ul><li>hi<li></ul>')
         return false;
-
     }
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("date")[0].setAttribute('min', today);
 </script>
