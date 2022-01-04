@@ -1,6 +1,11 @@
 body {
   font-family: 'Josephin Sans', sans-serif;
-  /* background-color: grey; */
+  background-color: #191919; 
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
 }
 h1, h2, h3, h4, p {
     text-align: center;
@@ -178,11 +183,68 @@ button:hover{
   background-color: transparent;
   border: 2px solid #f0127a;
   cursor: pointer;
+}
+
+.services{
+  background: #191919;
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.title {
+  color: white;
+  font-size: 60px;
+  width: 1130px;
+  margin: auto;
+  text-align: center;
+}
+
+.box{
+  margin: 0 auto;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  font-family: sans-serif;
+}
+
+.card{
+  height: 225px;
+  width: 300px;
+  padding: 20px 25px;
+  background: grey;
+  border-radius: 20px;
+  margin: 50px;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.final{
+  color: white;
+  font-size: 60px;
+  width: 1130px;
+  margin: auto;
+  text-align: center;
+}
+
+img{
+  width: 400px;
+  height: auto;
+  margin: 5px;
+  border: 6px double black;
 
 }
 
-
-
+.insta{
+  height: 200px;
+  width: auto;
+  color: #fcfc;
+  transition: 0.4s;
+}
+.insta:hover{
+  color: #191919;
+}
 /* Add a color to the active/current link */
 
 
