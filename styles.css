@@ -24,7 +24,8 @@ h1 {
     font-size: 50px;
 }
 h4 {
-    font-size: 30px;
+    font-size: 50px;
+    color: white;
 }
 .p-container {
   width: 800px;
@@ -245,6 +246,10 @@ img{
 .insta:hover{
   color: #191919;
 }
+
+
+
+
 /* Add a color to the active/current link */
 
 

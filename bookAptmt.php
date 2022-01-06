@@ -12,71 +12,81 @@
               <a>Create Account</a>
             </div>
         </div>
+        
+        
         <h4 id="services" style="margin-top: 20px;">Services</h4>
-        <div id="container">
-            <div>
-                <h2>Service A</h2>
-                <h3>Regular Haircut: $13</h3>
-                <ul>
-                    <li>All tapers</li>
-                    <li>Top hair trim</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                    <li>Hairstyling & hair product</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Service B</h2>
-                <h3>Skin Fades: $15</h3>
-                <ul>
-                    <li>All skin fades</li>
-                    <li>Top hair trim</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                    <li>Hairstyling & hair product</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Service C</h2>
-                <h3>Clean up: $5</h3>
-                <ul>
-                    <li>Shape up</li>
-                    <li>Clean up around neck</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Service D</h2>
-                <h3>Blade work: $5</h3>
-                <ul>
-                    <li>Beard work or full shave</li>
-                    <li>Beard trim</li>
-                    <li>Beard shape up</li>
-                    <li>Beard Blade work</li>
-                    <li>Beard pencil enhancement</li>
-                </ul>
-            </div>
-        </div>
+        <div class="box">
+                    <div class="card">
+                        <div class="text">Service A: Regular Haircut $13</div>
+                        <ul>
+                            <li>All tapers</li>
+                            <li>Top hair trim</li>
+                            <li>Line up</li>
+                            <li>Blade work</li>
+                            <li>Pencil enhancement</li>
+                            <li>Cool mist spray</li>
+                            <li>Talc powder neck</li>
+                            <li>Hairstyling & hair product</li>
+                        </ul>
+                    </div>
+                    
+
+                    
+                    <div class="card">
+                        <div class="text">Service B: Skin Fades $15</div>
+                        <ul>
+                            <li>All skin fades</li>
+                            <li>Top hair trim</li>
+                            <li>Line up</li>
+                            <li>Blade work</li>
+                            <li>Pencil enhancement</li>
+                            <li>Cool mist spray</li>
+                            <li>Talc powder neck</li>
+                            <li>Hairstyling & hair product</li>
+                        </ul>
+                    </div>
+                
+                    
+                    
+                    <div class="card">
+                        <div class="text">Service C: Clean Up $5</div>
+                        <ul>
+                            <li>Shape up</li>
+                            <li>Clean up around neck</li>
+                            <li>Line up</li>
+                            <li>Blade work</li>
+                            <li>Pencil enhancement</li>
+                            <li>Cool mist spray</li>
+                            <li>Talc powder neck</li>
+                        </ul>
+                    </div>
+                    
+
+                    
+                    <div class="card">
+                        <div class="text">Service D: Blade Work $5</div>
+                        <ul>
+                            <li>Beard work or full shave</li>
+                            <li>Beard trim</li>
+                            <li>Beard shape up</li>
+                            <li>Beard Blade work</li>
+                            <li>Beard pencil enhancement</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <br>
+    <div class= "service-box">           
         <form action="http://localhost/SiddCutz/recordAptmt.php" method="post" style="text-align: center;">
-            <label for="name">Name:</label>
+            <label for="name"><p style="color: white">Name:</p></label>
             <input type="text" name="name"><br>
             <br>
 
-            <label for="number">Phone Number:</label>
+            <label for="number"><p style="color:white">Phone Number:</p></label>
             <input type="text" name="number"><br>
             <br>
 
-            <label for="service">Service:</label><br>
+            <label for="service"><p style="color:white">Service:</p></label><br>
             <input type="radio" id="a" name="service" value="a">
               <label for="a" style="margin-right: 20px;">A</label>
             <input type="radio" id="b" name="service" value="b">
@@ -87,16 +97,16 @@
               <label for="d" style="margin-right: 20px;">D</label><br>
             <br>
 
-            <label for="location">Location:</label><br>
+            <label for="location"><p style="color:white">Location:</p></label><br>
             <input type="radio" id="parsippany" name="location" value="parsippany">
-              <label for="parsippany">Parsippany, NJ</label><br>
+              <label for="parsippany"><p style="color:white">Parsippany, NJ</p></label><br>
             <input type="radio" id="nb" name="location" value="nb">
-              <label for="nb">New Brunswick, NJ</label><br>
+              <label for="nb"><p style="color:white">New Brunswick, NJ</p></label><br>
             <input type="radio" id="house" name="location" value="house">
               <input type="text" for="house" placeholder="House call (enter address)"><br>
             <br>
             
-            <label for="date">Date:</label>
+            <label for="date"><p style="color:white">Date:</p></label>
             <input type="date" name="date" onchange="onDateChange(value)"><br>
             <!-- <input type="week" name="date"><br> -->
             <br>
@@ -106,16 +116,16 @@
             </div>
             <br>
 
-            <label for="time">Time:</label>
+            <label for="time"><p style= "color:white">Time:</p></label>
             <input type="time" value="12:00:00" name="time"><br>
             <br>
 
             <input type="submit"><br><br>
     
         </form><br>
-    </body>
-</html>
-<script>
+    
+    
+        <script>
     function success() 
     {
         alert("Successfully recorded appointment! Check your email for confirmation.");
@@ -164,3 +174,10 @@
 
     }
 </script>
+</div>
+    
+    
+    </body>
+</html>
+
+
