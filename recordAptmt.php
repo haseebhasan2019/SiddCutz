@@ -30,13 +30,42 @@
         $stmt->close();
         $conn->close();
         // header('Location: aptmt.php');
-        echo '<script>alert("Successfully recorded appointment! Check your email for confirmation.");</script>';
+        echo '<script>alert("Successfully recorded appointment! Check your phone for confirmation.");</script>';
         echo '<html><body><a href="index.html">Home</a></body></html>';
     }
+
+    //Send text message to client AND Shaheer
+        require __DIR__ . '/vendor/autoload.php';
+        use Twilio\Rest\Client;
+        include 'information.php';
+
+        //Message to Client
+        $message = 'Successfully booked appointment on ' . $date . ' at ' . $time . '!';
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create(
+            // Where to send a text message (your cell phone?)
+            $number,
+            array(
+                'from' => $twilio_number,
+                'body' => $message
+            )
+        );
+
+        //Message to Shaheer
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create(
+            // Where to send a text message (your cell phone?)
+            $number,
+            array(
+                'from' => $twilio_number,
+                'body' => 'New appointment, check dashboard!'
+            )
+        );
+        //Error handling for incorrect number?
 ?>
 <Script>
     //Alert saying aptmt recorded successful
     function success() {
-        alert("Successfully recorded appointment! Check your email for confirmation.");
+        alert("Successfully recorded appointment! Check your phone for confirmation.");
     }
 </Script>

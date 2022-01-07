@@ -1,2 +1,6 @@
 password.json
 imgs
+information.php
+vendor/
+composer.json
+composer.lock
