@@ -1,55 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <link rel="stylesheet" href="styles.css">
         <meta charset="utf-8">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     </head>
-    
+    <div class="topnav">
+        <a class="active" href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <div class="topnav-right">
+          <a href="login.html">Login</a>
+          <a>Create Account</a>
+        </div>
     </div>      
     <body>
-        <div class="topnav">
-            <nav>
-                <h2 class = "logo">Sidd<span>Cutz</span></h2>
-            <a class="active" href="index.html">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <div class="topnav-right">
-                <a href="login.html">Login</a>
-                <a>Create Account</a>
+        <div style="text-align: center; margin-top: 10px;"> 
+            <img src="imgs/SiddCutz2.jpeg" alt="SiddCutz" width="300">
+        </div>
+        <p>
+            Personal Barber
+        </p>
+        <p>
+            Parsippany, NJ / New Brunswick, NJ
+        </p>
+        <div style="text-align: center;">
+            <button style="border-color: #cc0303;  font-size: 17px; font-family:cursive; color: white; background-color: #cc0303" onclick= "location.href = 'bookAptmt.php'">Book an Appointment</button>
+        </div>
+        <div id="about" style="margin-top: 20px;">
+            <h4>About Me</h4>
+            <div class="p-container">
+                <p>Hi, I'm Shaheer aka SiddCutz! I'm currently an incoming freshman at Rutgers, New Brunswick. I have been
+                slowly but surely honing my barber skills for the past 4 years and I decided to start my own business! I
+                welcome all people looking to get a fresh cut! I offer a variety of services and packages that you can check
+                out and decide which is best for you! I hope to see you soon and bless you with your next cut!</p>
             </div>
-        </nav>
-        </div>  
-        
-        <div class= "content">
-            <h1>Shaheer Siddiqi</h1>
-            <h3>Parsippany, NJ / New Brunswick, NJ</h3>
-            <div style="text-align: center;">
-                <button style="border-color: #f0127a;  font-size: 17px; font-family:sans-serif; color: white; background-color: #f0127a" onclick= "location.href = 'bookAptmt.php'">Book an Appointment</button>
+            <div style="text-align: center; margin-top: 10px;"> 
+                <img src="imgs/shaheer.jpg" alt="Shaheer">
             </div>
         </div>
-        
-        <section class= "about">
-            <div class = "main">
-                <img src = "imgs/shaheer.jpg">
-                <div class= "about-text">
-                    <h2>About Me</h2>
-                    <h5>Personal Barber</h5>
-                    <p>Hi, I'm Shaheer aka SiddCutz! I'm currently a freshman at Rutgers, New Brunswick. I have been
-                        slowly but surely honing my barber skills for the past 4 years and I decided to start my own business! I
-                        welcome all people looking to get a fresh cut! I offer a variety of services and packages that you can check
-                        out and decide which is best for you! I hope to see you soon and bless you with your next cut!</p>
-                </div>
-            </div>
-        </section>
-        
         <h4 id="services" style="margin-top: 20px;">Services</h4>
         <div id="container">
             <div>
