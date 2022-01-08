@@ -28,80 +28,39 @@
         <h4 id="services" style="margin-top: 20px;">Services</h4>
         <div id="container">
             <div>
-                <h2>Service A</h2>
-                <h3>Regular Haircut: $13</h3>
-                <ul>
-                    <li>All tapers</li>
-                    <li>Top hair trim</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                    <li>Hairstyling & hair product</li>
-                </ul>
+                <h2>A: $15</h2>
+                <h3>Haircut</h3>
             </div>
             <div>
-                <h2>Service B</h2>
-                <h3>Skin Fades: $15</h3>
-                <ul>
-                    <li>All skin fades</li>
-                    <li>Top hair trim</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                    <li>Hairstyling & hair product</li>
-                </ul>
+                <h2>B: $20</h2>
+                <h3>Haircut + Beard / Shave</h3>
             </div>
             <div>
-                <h2>Service C</h2>
-                <h3>Clean up: $5</h3>
-                <ul>
-                    <li>Shape up</li>
-                    <li>Clean up around neck</li>
-                    <li>Line up</li>
-                    <li>Blade work</li>
-                    <li>Pencil enhancement</li>
-                    <li>Cool mist spray</li>
-                    <li>Talc powder neck</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Service D</h2>
-                <h3>Blade work: $5</h3>
-                <ul>
-                    <li>Beard work or full shave</li>
-                    <li>Beard trim</li>
-                    <li>Beard shape up</li>
-                    <li>Beard Blade work</li>
-                    <li>Beard pencil enhancement</li>
-                </ul>
+                <h2>C: $22</h2>
+                <h3>Haircut + Beard + Eyebrows</h3>
             </div>
         </div>
+        <br>
         <form name="bookingForm" action="http://localhost/SiddCutz/recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
-            <label for="name">Name:</label>
-            <input type="text" name="name" required><br>
+            <!-- <label for="name">Name:</label> -->
+            <input type="text" name="name" placeholder="Name" required><br>
             <br>
 
-            <label for="number">Phone Number:</label>
-            <input type="number" name="number" required><br>
+            <!-- <label for="number">Phone Number:</label> -->
+            <input type="number" name="number"  placeholder="Phone Number" required><br>
             <br>
 
-            <label for="email">Email:</label>
-            <input type="email" name="email" required><br>
+            <!-- <label for="email">Email:</label> -->
+            <input type="email" name="email" placeholder="Email" required><br>
             <br>
 
             <label for="service">Service:</label><br>
             <input type="radio" id="a" name="service" value="a" required>
-              <label for="a" style="margin-right: 20px;">A</label>
+              <label for="a" style="margin-right: 20px;">A</label><br>
             <input type="radio" id="b" name="service" value="b">
-              <label for="b" style="margin-right: 20px;">B</label>
+              <label for="b" style="margin-right: 20px;">B</label><br>
             <input type="radio" id="c" name="service" value="c">
-              <label for="c" style="margin-right: 20px;">C</label>
-            <input type="radio" id="d" name="service" value="d">
-              <label for="d" style="margin-right: 20px;">D</label><br>
+              <label for="c" style="margin-right: 20px;">C</label><br>
             <br>
 
             <label for="location">Location:</label><br>
@@ -120,9 +79,10 @@
             <div id="availabilities"></div>
             <br>
 
-            <input type="submit"><br><br>
+            <input type="submit" value="Book Appointment"><br><br>
     
         </form><br>
+        <p>*By clicking "Book Appointment" I consent to paying the agreed price for the selected service*</p>
     </body>
 </html>
 <script>
@@ -130,7 +90,15 @@
         console.log("In validation")
         let num = document.forms["bookingForm"]["number"].value.toString();
         if (num.length != 10 || num.charAt(0) == '0') {
-            alert("Enter a valid phone number");
+            alert("Please enter a valid phone number.");
+            return false;
+        }
+        let time = document.forms["bookingForm"]["time"];
+
+        console.log(time)
+        if (time == null || time.value == null)
+        {
+            alert("Please enter an appointment time.");
             return false;
         }
 
@@ -153,13 +121,29 @@
             const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
             const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
 
+            let noTimes = true;
             for (let i = 0; i < text.length; i++)
             {
                 if (text[i] == 1)
                 {
-                    ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
-                    ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>'
-                }            
+                    noTimes = false;
+                    break;
+                }
+            }
+            if (noTimes)
+            {
+                ele.innerHTML += '<p>No available appointments on ' + val + '</p><br>'
+            }
+            else
+            {
+                for (let i = 0; i < text.length; i++)
+                {
+                    if (text[i] == 1)
+                    {
+                        ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
+                        ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>'
+                    }            
+                }
             }
         })
         .catch(function (error) {
