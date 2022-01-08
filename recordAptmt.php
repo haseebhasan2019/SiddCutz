@@ -33,7 +33,7 @@
         echo '<script>alert("Successfully recorded appointment! Check your phone for confirmation.");</script>';
         echo '<html><body><a href="index.html">Home</a></body></html>';
     }
-
+/*
     //Send text message to client AND Shaheer
         require __DIR__ . '/vendor/autoload.php';
         use Twilio\Rest\Client;
@@ -55,13 +55,14 @@
         $client = new Client($account_sid, $auth_token);
         $client->messages->create(
             // Where to send a text message (your cell phone?)
-            $number,
+            $number, //$admin_number
             array(
                 'from' => $twilio_number,
                 'body' => 'New appointment, check dashboard!'
             )
         );
         //Error handling for incorrect number?
+*/
 ?>
 <Script>
     //Alert saying aptmt recorded successful

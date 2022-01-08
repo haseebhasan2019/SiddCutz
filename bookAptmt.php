@@ -3,6 +3,19 @@
     <head>
         <link rel="stylesheet" href="styles.css">
         <meta charset="utf-8">
+        <style>
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+            -moz-appearance: textfield;
+            }
+        </style>
     </head>
     <body>
         <div class="topnav">
@@ -67,13 +80,13 @@
                 </ul>
             </div>
         </div>
-        <form action="http://localhost/SiddCutz/recordAptmt.php" method="post" style="text-align: center;">
+        <form name="bookingForm" action="http://localhost/SiddCutz/recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
             <label for="name">Name:</label>
             <input type="text" name="name" required><br>
             <br>
 
             <label for="number">Phone Number:</label>
-            <input type="text" name="number" required><br>
+            <input type="number" name="number" required><br>
             <br>
 
             <label for="email">Email:</label>
@@ -94,10 +107,10 @@
             <label for="location">Location:</label><br>
             <input type="radio" id="parsippany" name="location" value="parsippany" required>
               <label for="parsippany">Parsippany, NJ</label><br>
-            <input type="radio" id="nb" name="location" value="nb">
+            <!-- <input type="radio" id="nb" name="location" value="nb">
               <label for="nb">New Brunswick, NJ</label><br>
             <input type="radio" id="house" name="location" value="house">
-              <input type="text" for="house" placeholder="House call (enter address)"><br>
+              <input type="text" for="house" placeholder="House call (enter address)"><br> -->
             <br>
             
             <label for="date">Date:</label>
@@ -113,6 +126,15 @@
     </body>
 </html>
 <script>
+    function validateForm() {
+        console.log("In validation")
+        let num = document.forms["bookingForm"]["number"].value.toString();
+        if (num.length != 10 || num.charAt(0) == '0') {
+            alert("Enter a valid phone number");
+            return false;
+        }
+
+    }
     function success() 
     {
         alert("Successfully recorded appointment! Check your email for confirmation.");
