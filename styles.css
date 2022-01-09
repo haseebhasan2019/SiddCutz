@@ -247,7 +247,9 @@ img{
   color: #191919;
 }
 
-
+label.p{
+  font-size: 30px;
+}
 
 
 /* Add a color to the active/current link */

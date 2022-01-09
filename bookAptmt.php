@@ -14,7 +14,7 @@
         </div>
         
         
-        <h4 id="services" style="margin-top: 20px;">Services</h4>
+        <h4 id="services" style="margin-top: 20px;">My Services</h4>
         <div class="box">
                     <div class="card">
                         <div class="text">Service A: Regular Haircut $13</div>
@@ -76,6 +76,7 @@
                 </div>
                 
                 <br>
+
     <div class= "service-box">           
         <form action="http://localhost/SiddCutz/recordAptmt.php" method="post" style="text-align: center;">
             <label for="name"><p style="color: white">Name:</p></label>
