@@ -51,8 +51,8 @@
             <br>
 
             <!-- <label for="email">Email:</label> -->
-            <input type="email" name="email" placeholder="Email" required><br>
-            <br>
+            <!-- <input type="email" name="email" placeholder="Email" required><br>
+            <br> -->
 
             <label for="service">Service:</label><br>
             <input type="radio" id="a" name="service" value="a" required>
@@ -73,7 +73,7 @@
             <br>
             
             <label for="date">Date:</label>
-            <input type="date" name="date" onchange="onDateChange(value)" required><br>
+            <input id="date" type="date" name="date" onchange="onDateChange(value)" required><br>
             <br>
 
             <div id="availabilities"></div>
@@ -82,7 +82,7 @@
             <input type="submit" value="Book Appointment"><br><br>
     
         </form><br>
-        <p>*By clicking "Book Appointment" I consent to paying the agreed price for the selected service*</p>
+        <p>*By clicking "Book Appointment" I consent to paying the listed price for the selected service*</p>
     </body>
 </html>
 <script>
@@ -96,16 +96,11 @@
         let time = document.forms["bookingForm"]["time"];
 
         console.log(time)
-        if (time == null || time.value == null)
-        {
+        if (time == null || time.value == null) {
             alert("Please enter an appointment time.");
             return false;
         }
 
-    }
-    function success() 
-    {
-        alert("Successfully recorded appointment! Check your email for confirmation.");
     }
     function onDateChange(val)
     {
@@ -120,26 +115,22 @@
             ele.innerHTML = "";
             const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
             const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+            const militarytimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+            let hour = new Date().getHours();
             let noTimes = true;
-            for (let i = 0; i < text.length; i++)
-            {
-                if (text[i] == 1)
-                {
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] == 1) {
                     noTimes = false;
                     break;
                 }
             }
-            if (noTimes)
-            {
+            if (noTimes) {
                 ele.innerHTML += '<p>No available appointments on ' + val + '</p><br>'
             }
-            else
-            {
-                for (let i = 0; i < text.length; i++)
-                {
-                    if (text[i] == 1)
-                    {
+            else {
+                for (let i = 0; i < text.length; i++) {
+                    if (text[i] == 1 && hour < militarytimes[i]) {
                         ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
                         ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>'
                     }            
@@ -152,6 +143,8 @@
 
         return false;
     }
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("date")[0].setAttribute('min', today);
+    var date = new Date();
+    date.setDate(date.getDate() - 1);
+    var yesterday = date.toISOString().split('T')[0];
+    document.getElementsByName("date")[0].setAttribute('min', yesterday);
 </script>
