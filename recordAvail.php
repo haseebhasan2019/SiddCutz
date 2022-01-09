@@ -20,6 +20,23 @@
         echo "$conn->connect_error";
         die('Connection Failed : ' .$conn->connect_error);
     } else {
+        //Get times that already have appointments
+        $getTimes = mysqli_query($conn, "SELECT * FROM availability WHERE date = '$date'");
+        while($row = mysqli_fetch_array($getTimes))
+        {
+            if ($row['9am'] == "2") {$_9am = "2";}
+            if ($row['10am'] == "2") {$_10am = "2";}
+            if ($row['11am'] == "2") {$_11am = "2";}
+            if ($row['12pm'] == "2") {$_12pm = "2";}
+            if ($row['1pm'] == "2") {$_1pm = "2";}
+            if ($row['2pm'] == "2") {$_2pm = "2";}
+            if ($row['3pm'] == "2") {$_3pm = "2";}
+            if ($row['4pm'] == "2") {$_4pm = "2";}
+            if ($row['5pm'] == "2") {$_5pm = "2";}
+            if ($row['6pm'] == "2") {$_6pm = "2";}
+            if ($row['7pm'] == "2") {$_7pm = "2";}
+            if ($row['8pm'] == "2") {$_8pm = "2";}
+        }
         //if this date already exists in the table, delete it first
         $sql = "DELETE FROM availability WHERE date = '$date'";
         if ($conn->query($sql) === TRUE) {
