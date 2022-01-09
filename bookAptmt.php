@@ -117,6 +117,11 @@
             const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
             const militarytimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+            let today = new Date().toISOString().split('T')[0];
+            today.toLocaleString('en-US', { timeZone: 'America/New_York' })
+
+            console.log(val)
+            console.log(today)
             let hour = new Date().getHours();
             let noTimes = true;
             for (let i = 0; i < text.length; i++) {
@@ -130,7 +135,7 @@
             }
             else {
                 for (let i = 0; i < text.length; i++) {
-                    if (text[i] == 1 && hour < militarytimes[i]) {
+                    if (text[i] == 1 && (val == today && hour < militarytimes[i])) {
                         ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
                         ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>'
                     }            
