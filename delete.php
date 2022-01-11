@@ -1,21 +1,25 @@
 <?php
+    //Send text message to client
+    require __DIR__ . '/vendor/autoload.php';
+    use Twilio\Rest\Client;
+    include 'information.php';
+
     $con=mysqli_connect("localhost","root","","siddcutz");
     // Check connection
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     } else {
-        // Get time of appointment
+        // Get time and date of appointment
         $id=$_GET['rn'];
-        echo $id;
-        $time = "none";
-        $getTime = mysqli_query($con, "SELECT `time` from appointment where `id` = $id");
-        while ($row = mysqli_fetch_array($getTime)) {
+        $getTimeAndDate = mysqli_query($con, "SELECT `time`, `date`, `number`  from appointment where `id` = $id");
+        while ($row = mysqli_fetch_array($getTimeAndDate)) {
             $time = $row['time'];
+            $date = $row['date'];
+            $number = $row['number'];
         }
-        echo $time;
 
         // Change availability to available in database based on id of appointment
-        $sql = "UPDATE `availability` SET `$time`='1' WHERE `date`=(SELECT `date` from appointment where `id` = $id);";
+        $sql = "UPDATE `availability` SET `$time`='1' WHERE `date`='$date';";
         echo $sql;
         if ($con->query($sql) === TRUE)  {
             echo "Successfully updated availability. ";
@@ -25,6 +29,20 @@
             if ($data) {
                 echo "Record deleted from database."; //convert to alert?
                 header('Location: admin.php');
+
+                // //Message to Client
+                // $message = 'Your appointment on ' . $date . ' at ' . $time . ' has been cancelled.';
+                // $client = new Client($account_sid, $auth_token);
+                // $client->messages->create(
+                //     // Where to send a text message (your cell phone?)
+                //     $number,
+                //     array(
+                //         'from' => $twilio_number,
+                //         'body' => $message
+                //     )
+                // );
+
+                // echo '<script>alert("Successfully deleted appointment - the client will receive a text update");</script>';
             } else {
                 echo "Failed to delete record from database.";
             }
