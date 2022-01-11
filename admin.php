@@ -65,7 +65,7 @@
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['date']; ?></td>
                         <td><?php echo $row['time']; ?></td>
-                        <td><a href='delete.php?rn=$result[id]'>X</td>
+                        <td><a href='delete.php?rn=<?php echo $row['id']?>'>X</td>
                     </tr>
             <?php
                 }
