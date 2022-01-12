@@ -149,8 +149,18 @@
 
         return false;
     }
-    var date = new Date();
-    date.setDate(date.getDate() - 1);
-    var yesterday = date.toISOString().split('T')[0];
-    document.getElementsByName("date")[0].setAttribute('min', yesterday);
+    // var date = new Date();
+    // date.setDate(date.getDate() - 1);
+    // var yesterday = date.toISOString().split('T')[0];
+    // document.getElementsByName("date")[0].setAttribute('min', yesterday);
+    let today = new Date();
+    let y = today.getFullYear();
+    let m = today.getMonth()+1;
+    let d = today.getDate();
+    if (m < 10)
+        m = '0' + m;
+    if (d < 10)
+        d = '0'+d;
+    today = y + '-'+ m  + '-' + d;
+    document.getElementsByName("date")[0].setAttribute('min', today);
 </script>
