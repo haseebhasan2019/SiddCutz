@@ -50,9 +50,9 @@
             <input type="number" name="number"  placeholder="Phone Number" required><br>
             <br>
 
-            <!-- <label for="email">Email:</label> -->
+            <!-- <label for="email">Email:</label>
             <input type="email" name="email" placeholder="Email" required><br>
-            <br>
+            <br> -->
 
             <label for="service">Service:</label><br>
             <input type="radio" id="a" name="service" value="a" required>

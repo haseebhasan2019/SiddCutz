@@ -43,7 +43,6 @@
             <t>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Email</th>
                 <th>Service</th>
                 <th>Location</th>
                 <th>Date</th>
@@ -57,7 +56,6 @@
                     <tr>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['number']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['service']; ?></td>
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['date']; ?></td>
