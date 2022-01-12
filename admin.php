@@ -6,7 +6,11 @@
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    $result = mysqli_query($con,"SELECT * FROM appointment WHERE DATE(date) >= CURDATE() ORDER BY date;");
+    $result = mysqli_query($con,"SELECT * FROM appointment WHERE DATE(date) >= CURDATE() ORDER BY date, 
+    CASE when time = '8am' then '1' when time = '9am' then '2' when time = '10am' then '3' when time = '11am' 
+    then '4' when time = '12pm' then '5' when time = '1pm' then '6' when time = '2pm' then '7' when time = '3pm' 
+    then '8' when time = '4pm' then '9' when time = '5pm' then '10' when time = '6pm' then '11' when time = '7pm' 
+    then '12' when time = '8pm' then '13' ELSE time END ASC;");
     $availability = mysqli_query($con, "SELECT * FROM availability WHERE date >= CURDATE() ORDER BY date;");
 ?>
 <!DOCTYPE html>
