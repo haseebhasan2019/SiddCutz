@@ -1,7 +1,6 @@
 <?php
     $name = $_POST['name'];
     $number = $_POST['number'];
-    $email = $_POST['email'];
     $service = $_POST['service'];
     $location = $_POST['location'];
     $date = $_POST['date'];
@@ -22,9 +21,9 @@
           }
 
 
-        $stmt = $conn->prepare("insert into appointment(name, number, email, service, location, date, time)
-        values(?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sisssss", $name, $number, $email, $service, $location, $date, $time);
+        $stmt = $conn->prepare("insert into appointment(name, number, service, location, date, time)
+        values(?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sissss", $name, $number, $service, $location, $date, $time);
         $stmt->execute();
         // echo "Appointment recorded";
         $stmt->close();

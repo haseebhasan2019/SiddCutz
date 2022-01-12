@@ -36,9 +36,6 @@
         </div>
     </div>    
     <h1>Welcome to Admin Portal</h1>
-    <!-- <form action="http://localhost/loadDb.php" method="get">
-        <input type="submit" value="my button"/>
-      </form> -->
         <table align="center" border="1px" style="width:1000px; line-height:40px;">
             <tr>
                 <th colspan="8"><h2>Appointments</h2></th>
@@ -46,7 +43,6 @@
             <t>
                 <th>Name</th>
                 <th>Number</th>
-                <th>Email</th>
                 <th>Service</th>
                 <th>Location</th>
                 <th>Date</th>
@@ -60,7 +56,6 @@
                     <tr>
                         <td><?php echo $row['name']; ?></td>
                         <td><?php echo $row['number']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
                         <td><?php echo $row['service']; ?></td>
                         <td><?php echo $row['location']; ?></td>
                         <td><?php echo $row['date']; ?></td>
@@ -76,10 +71,11 @@
         <form action="http://localhost/SiddCutz/recordAvail.php" method="post" style="text-align: center;">
             <table align="center" border="1px">
                 <tr>
-                    <th colspan="13"><h2>Select Availability</h2></th>
+                    <th colspan="14"><h2>Select Availability</h2></th>
                 </tr>
                 <tr>
                     <td>Day</td>
+                    <td>8:00am</td>
                     <td>9:00am</td>
                     <td>10:00am</td>
                     <td>11:00am</td>
@@ -95,6 +91,7 @@
                 </tr>
                 <tr>
                     <td><input type="date" name="date" required></td>
+                    <td><input type="checkbox" name="8am" value="1"></td>
                     <td><input type="checkbox" name="9am" value="1"></td>
                     <td><input type="checkbox" name="10am" value="1"></td>
                     <td><input type="checkbox" name="11am" value="1"></td>
@@ -114,10 +111,11 @@
 
         <table align="center" border="1px">
             <tr>
-                <th colspan="13"><h2>Availability</h2></th>
+                <th colspan="14"><h2>Availability</h2></th>
             </tr>
             <tr>
                 <td>Date</td>
+                <td>8:00am</td>
                 <td>9:00am</td>
                 <td>10:00am</td>
                 <td>11:00am</td>
@@ -154,7 +152,7 @@
                                 
                             // }
                         ?>
-
+                        <?php if ($row['8am'] == "2") {echo "<td class='green'></td>";} elseif ($row['8am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
                         <?php if ($row['9am'] == "2") {echo "<td class='green'></td>";} elseif ($row['9am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
                         <?php if ($row['10am'] == "2") {echo "<td class='green'></td>";} elseif ($row['10am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
                         <?php if ($row['11am'] == "2") {echo "<td class='green'></td>";} elseif ($row['11am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>

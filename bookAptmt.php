@@ -50,9 +50,9 @@
             <input type="number" name="number"  placeholder="Phone Number" required><br>
             <br>
 
-            <!-- <label for="email">Email:</label> -->
+            <!-- <label for="email">Email:</label>
             <input type="email" name="email" placeholder="Email" required><br>
-            <br>
+            <br> -->
 
             <label for="service">Service:</label><br>
             <input type="radio" id="a" name="service" value="a" required>
@@ -113,28 +113,23 @@
         .then(function (text) {
             ele = document.getElementById("availabilities");
             ele.innerHTML = "";
-            const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
-            const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
-            const militarytimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            const times = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
+            const dbtimes = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+            const militarytimes = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-            let today = new Date()
-            let y = today.getFullYear()
-            let m = today.getMonth()+1
-            let d = today.getDate()
-            let hour = today.getHours();
-            if (m < 10)
-                m = '0' + m;
-            if (d < 10)
-                d = '0'+d
-            today = y + '-'+ m  + '-' + d
-            // console.log(today)
-            // console.log(val)
-            // console.log(hour)
-
+            let today = getToday();
+            let hour = (new Date()).getHours();
             let noTimes = true;
+            let atLeastOne = true;
+            const dayOfWeek = (new Date(val)).getDay();
+            
             for (let i = 0; i < text.length; i++) {
                 if (text[i] == 1 && (val != today || (val == today && hour < militarytimes[i]))) {
                     noTimes = false;
+                    if ((dayOfWeek==5 || dayOfWeek==6) && atLeastOne) {
+                        ele.innerHTML += '<p>*Appointments from 3:00 PM onwards on Saturday<br>and Sunday incur a $5.00 extra charge*</p><br>';
+                        atLeastOne = false;
+                    }
                     ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
                     ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>';
                 }            
@@ -149,8 +144,16 @@
 
         return false;
     }
-    var date = new Date();
-    date.setDate(date.getDate() - 1);
-    var yesterday = date.toISOString().split('T')[0];
-    document.getElementsByName("date")[0].setAttribute('min', yesterday);
+    function getToday() {
+        let today = new Date();
+        let y = today.getFullYear();
+        let m = today.getMonth()+1;
+        let d = today.getDate();
+        if (m < 10)
+            m = '0'+m;
+        if (d < 10)
+            d = '0'+d;
+        return y + '-'+ m  + '-' + d;
+    }
+    document.getElementsByName("date")[0].setAttribute('min', getToday());
 </script>

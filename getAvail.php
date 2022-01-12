@@ -13,6 +13,7 @@
         $availability = mysqli_query($con, "SELECT * FROM availability WHERE date = '$date'");
         // -- BETWEEN CURDATE() AND CURDATE()+7 ORDER BY date");
         while ($row = $availability->fetch_assoc()) {
+            echo $row['8am'];
             echo $row['9am'];
             echo $row['10am'];
             echo $row['11am'];
