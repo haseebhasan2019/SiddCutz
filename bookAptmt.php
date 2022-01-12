@@ -132,9 +132,15 @@
             // console.log(hour)
 
             let noTimes = true;
+            let atLeastOne = true;
+            const dayOfWeek = (new Date(val)).getDay();
             for (let i = 0; i < text.length; i++) {
                 if (text[i] == 1 && (val != today || (val == today && hour < militarytimes[i]))) {
                     noTimes = false;
+                    if ((dayOfWeek==5 || dayOfWeek==6) && atLeastOne) {
+                        ele.innerHTML += '<p>*Appointments from 3:00 PM onwards on Saturday<br>and Sunday incur a $5.00 extra charge*</p><br>';
+                        atLeastOne = false;
+                    }
                     ele.innerHTML += '<input type="radio" id="' + dbtimes[i] + '" name="time" value="' + dbtimes[i] + '" required>';
                     ele.innerHTML += '<label for="' + dbtimes[i] + '" style="margin-right: 20px;">' + times[i] + '</label><br>';
                 }            
