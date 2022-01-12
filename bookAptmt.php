@@ -113,9 +113,9 @@
         .then(function (text) {
             ele = document.getElementById("availabilities");
             ele.innerHTML = "";
-            const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
-            const dbtimes = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
-            const militarytimes = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+            const times = ["8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
+            const dbtimes = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
+            const militarytimes = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
             let today = new Date()
             let y = today.getFullYear()
