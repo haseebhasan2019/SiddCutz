@@ -75,7 +75,7 @@
         <form action="http://localhost/SiddCutz/recordAvail.php" method="post" style="text-align: center;">
             <table align="center" border="1px">
                 <tr>
-                    <th colspan="14"><h2>Select Availability</h2></th>
+                    <th colspan="15"><h2>Select Availability</h2></th>
                 </tr>
                 <tr>
                     <td>Day</td>
@@ -92,22 +92,24 @@
                     <td>6:00pm</td>
                     <td>7:00pm</td>
                     <td>8:00pm</td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td><input type="date" name="date" required></td>
-                    <td><input type="checkbox" name="8am" value="1"></td>
-                    <td><input type="checkbox" name="9am" value="1"></td>
-                    <td><input type="checkbox" name="10am" value="1"></td>
-                    <td><input type="checkbox" name="11am" value="1"></td>
-                    <td><input type="checkbox" name="12pm" value="1"></td>
-                    <td><input type="checkbox" name="1pm" value="1"></td>
-                    <td><input type="checkbox" name="2pm" value="1"></td>
-                    <td><input type="checkbox" name="3pm" value="1"></td>
-                    <td><input type="checkbox" name="4pm" value="1"></td>
-                    <td><input type="checkbox" name="5pm" value="1"></td>
-                    <td><input type="checkbox" name="6pm" value="1"></td>
-                    <td><input type="checkbox" name="7pm" value="1"></td>
-                    <td><input type="checkbox" name="8pm" value="1"></td>
+                    <td><input type="date" id="date" name="date" onchange="onDateChange(value)" required></td>
+                    <td><input type="checkbox" id="8am" name="8am" value="1"></td>
+                    <td><input type="checkbox" id="9am" name="9am" value="1"></td>
+                    <td><input type="checkbox" id="10am" name="10am" value="1"></td>
+                    <td><input type="checkbox" id="11am" name="11am" value="1"></td>
+                    <td><input type="checkbox" id="12pm" name="12pm" value="1"></td>
+                    <td><input type="checkbox" id="1pm" name="1pm" value="1"></td>
+                    <td><input type="checkbox" id="2pm" name="2pm" value="1"></td>
+                    <td><input type="checkbox" id="3pm" name="3pm" value="1"></td>
+                    <td><input type="checkbox" id="4pm" name="4pm" value="1"></td>
+                    <td><input type="checkbox" id="5pm" name="5pm" value="1"></td>
+                    <td><input type="checkbox" id="6pm" name="6pm" value="1"></td>
+                    <td><input type="checkbox" id="7pm" name="7pm" value="1"></td>
+                    <td><input type="checkbox" id="8pm" name="8pm" value="1"></td>
+                    <td><input type="button" value="Default" onClick="return defaultAvailability()"></td>
             </table>
             <input type="submit">
         </form>
@@ -178,3 +180,60 @@
         </table>
         <br>
 </html>
+<script>
+    function defaultAvailability() {
+        let date = document.getElementById("date").value;
+        if (date == null || date == "")
+        {
+            alert("Select Date");
+            return false;
+        }
+        const dayOfWeek = (new Date(date)).getDay();
+        if (dayOfWeek == 5 || dayOfWeek == 6) { //Weekend
+            document.getElementById("8am").checked = false;
+            document.getElementById("9am").checked = false;
+            document.getElementById("10am").checked = true;
+            document.getElementById("11am").checked = true;
+            document.getElementById("12pm").checked = true;
+            document.getElementById("1pm").checked = true;
+            document.getElementById("2pm").checked = true;
+            document.getElementById("3pm").checked = true;
+            document.getElementById("4pm").checked = true;
+            document.getElementById("5pm").checked = true;
+            document.getElementById("6pm").checked = true;
+            document.getElementById("7pm").checked = true;
+            document.getElementById("8pm").checked = true;
+        }  
+        else { //Weekday
+            document.getElementById("8am").checked = true;
+            document.getElementById("9am").checked = true;
+            document.getElementById("10am").checked = true;
+            document.getElementById("11am").checked = true;
+            document.getElementById("12pm").checked = false;
+            document.getElementById("1pm").checked = false;
+            document.getElementById("2pm").checked = false;
+            document.getElementById("3pm").checked = false;
+            document.getElementById("4pm").checked = false;
+            document.getElementById("5pm").checked = false;
+            document.getElementById("6pm").checked = false;
+            document.getElementById("7pm").checked = false;
+            document.getElementById("8pm").checked = false;
+        }
+        return true;
+    }
+    function onDateChange(val) {
+        document.getElementById("8am").checked = false;
+        document.getElementById("9am").checked = false;
+        document.getElementById("10am").checked = false;
+        document.getElementById("11am").checked = false;
+        document.getElementById("12pm").checked = false;
+        document.getElementById("1pm").checked = false;
+        document.getElementById("2pm").checked = false;
+        document.getElementById("3pm").checked = false;
+        document.getElementById("4pm").checked = false;
+        document.getElementById("5pm").checked = false;
+        document.getElementById("6pm").checked = false;
+        document.getElementById("7pm").checked = false;
+        document.getElementById("8pm").checked = false;
+    }
+</script>
