@@ -14,23 +14,17 @@
     } else {
         // Change availability to appointment in database
         $sql = "UPDATE `availability` SET `$time`='2' WHERE `date`='$date'";
-        if ($conn->query($sql) === TRUE) {
-            // echo "Successfully updated availability. ";
-          } else {
+        if ($conn->query($sql) !== TRUE) {
             echo "Error updating availability: " . $conn->error;
           }
-
 
         $stmt = $conn->prepare("insert into appointment(name, number, service, location, date, time)
         values(?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sissss", $name, $number, $service, $location, $date, $time);
         $stmt->execute();
-        // echo "Appointment recorded";
         $stmt->close();
         $conn->close();
-        // header('Location: aptmt.php');
-        echo '<script>alert("Successfully recorded appointment! Check your phone for confirmation.");</script>';
-        echo '<html><body><a href="index.html">Home</a></body></html>';
+        header('Location: confirmation.html');
     }
 /*
     //Send text message to client AND Shaheer
@@ -63,9 +57,3 @@
         //Error handling for incorrect number?
 */
 ?>
-<Script>
-    //Alert saying aptmt recorded successful
-    function success() {
-        alert("Successfully recorded appointment! Check your phone for confirmation.");
-    }
-</Script>
