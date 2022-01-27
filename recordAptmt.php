@@ -26,7 +26,6 @@
         $conn->close();
         header('Location: confirmation.html');
     }
-/*
     //Send text message to client AND Shaheer
         require __DIR__ . '/vendor/autoload.php';
         use Twilio\Rest\Client;
@@ -55,5 +54,4 @@
             )
         );
         //Error handling for incorrect number?
-*/
 ?>
