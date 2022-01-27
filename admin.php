@@ -141,37 +141,13 @@
             ?>
                     <tr>
                         <td><?php echo $row['date']; ?></td>
-                        <?php
-                        // $emparray[] = $row;
-                        // $y = json_encode($emparray);
-                            // foreach ($row as $key) {
-                            //     echo "<script>console.log($key);</script>";
-
-                                // $output = "";
-                                // if ($value == "2") {
-                                //     $output = "Apt";
-                                // }
-                                // elseif ($value == "1") {
-                                //     $output = "X";
-                                // }
-                                // echo "<td>$output</td>";
-                                
-                            // }
+                        <?php 
+                            $times = array("8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm");
+                            foreach ($times as $time)
+                            {
+                            if ($row[$time] == "2") {echo "<td class='green'></td>";} elseif ($row[$time] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>";
+                            }
                         ?>
-                        <?php if ($row['8am'] == "2") {echo "<td class='green'></td>";} elseif ($row['8am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['9am'] == "2") {echo "<td class='green'></td>";} elseif ($row['9am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['10am'] == "2") {echo "<td class='green'></td>";} elseif ($row['10am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['11am'] == "2") {echo "<td class='green'></td>";} elseif ($row['11am'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['12pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['12pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['1pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['1pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['2pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['2pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['3pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['3pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['4pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['4pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['5pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['5pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['6pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['6pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['7pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['7pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-                        <?php if ($row['8pm'] == "2") {echo "<td class='green'></td>";} elseif ($row['8pm'] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>"?>
-
                     </tr>
             <?php
                 }
@@ -181,59 +157,29 @@
         <br>
 </html>
 <script>
+    const times = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];
     function defaultAvailability() {
         let date = document.getElementById("date").value;
-        if (date == null || date == "")
-        {
+        if (date == null || date == "") {
             alert("Select Date");
             return false;
         }
         const dayOfWeek = (new Date(date)).getDay();
-        if (dayOfWeek == 5 || dayOfWeek == 6) { //Weekend
-            document.getElementById("8am").checked = false;
-            document.getElementById("9am").checked = false;
-            document.getElementById("10am").checked = true;
-            document.getElementById("11am").checked = true;
-            document.getElementById("12pm").checked = true;
-            document.getElementById("1pm").checked = true;
-            document.getElementById("2pm").checked = true;
-            document.getElementById("3pm").checked = true;
-            document.getElementById("4pm").checked = true;
-            document.getElementById("5pm").checked = true;
-            document.getElementById("6pm").checked = true;
-            document.getElementById("7pm").checked = true;
-            document.getElementById("8pm").checked = true;
-        }  
-        else { //Weekday
-            document.getElementById("8am").checked = true;
-            document.getElementById("9am").checked = true;
-            document.getElementById("10am").checked = true;
-            document.getElementById("11am").checked = true;
-            document.getElementById("12pm").checked = false;
-            document.getElementById("1pm").checked = false;
-            document.getElementById("2pm").checked = false;
-            document.getElementById("3pm").checked = false;
-            document.getElementById("4pm").checked = false;
-            document.getElementById("5pm").checked = false;
-            document.getElementById("6pm").checked = false;
-            document.getElementById("7pm").checked = false;
-            document.getElementById("8pm").checked = false;
-        }
+        const avail = new Map();
+        avail.set(0, ["8am", "9am", "10am", "11am"]);
+        avail.set(1, ["8am", "9am", "10am", "11am"]);
+        avail.set(2, ["8am", "9am", "10am", "11am"]);
+        avail.set(3, ["8am", "9am", "10am", "11am"]);
+        avail.set(4, ["8am", "9am", "10am", "11am"]);
+        avail.set(5, ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"]);
+        avail.set(6, ["10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"]);
+        
+        times.forEach(time => document.getElementById(time).checked = false);
+        avail.get(dayOfWeek).forEach(time => document.getElementById(time).checked = true);
+
         return true;
     }
     function onDateChange(val) {
-        document.getElementById("8am").checked = false;
-        document.getElementById("9am").checked = false;
-        document.getElementById("10am").checked = false;
-        document.getElementById("11am").checked = false;
-        document.getElementById("12pm").checked = false;
-        document.getElementById("1pm").checked = false;
-        document.getElementById("2pm").checked = false;
-        document.getElementById("3pm").checked = false;
-        document.getElementById("4pm").checked = false;
-        document.getElementById("5pm").checked = false;
-        document.getElementById("6pm").checked = false;
-        document.getElementById("7pm").checked = false;
-        document.getElementById("8pm").checked = false;
+        times.forEach(time => document.getElementById(time).checked = false);
     }
 </script>
