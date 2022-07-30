@@ -2,75 +2,153 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <meta charset="utf-8">
 </head>
-<div class="topnav">
-    <a class="active" href="index.html">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <div class="topnav-right">
-        <a href="login.html">Login</a>
-        <a>Create Account</a>
-    </div>
-</div>
 
-<body>
-    <div style="text-align: center; margin-top: 10px;">
+<body style="background-color: rgb(44, 44, 44);">
+
+    <!-- Nav bar -->
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Create Account</a>
+        </li>
+    </ul>
+
+    <!-- Introduction -->
+    <div style="text-align: center; margin-top: 10px; color: white;">
         <img src="imgs/SiddCutz2.jpeg" alt="SiddCutz" width="300">
+        <p>
+            Parsippany, NJ / New Brunswick, NJ
+        </p>
+        <button class="btn btn-danger" onclick="location.href = 'bookAptmt.php'">Book an Appointment</button>
     </div>
-    <p>
-        Personal Barber
-    </p>
-    <p>
-        Parsippany, NJ / New Brunswick, NJ
-    </p>
-    <div style="text-align: center;">
-        <button
-            style="border-color: #cc0303;  font-size: 17px; font-family:cursive; color: white; background-color: #cc0303"
-            onclick="location.href = 'bookAptmt.php'">Book an Appointment</button>
-    </div>
-    <div id="about" style="margin-top: 20px;">
-        <h4>About Me</h4>
-        <div class="p-container">
-            <p>Hi, I'm Shaheer aka SiddCutz! I'm currently an incoming freshman at Rutgers, New Brunswick. I have been
-                slowly but surely honing my barber skills for the past 4 years and I decided to start my own business! I
-                welcome all people looking to get a fresh cut! I offer a variety of services and packages that you can
-                check
-                out and decide which is best for you! I hope to see you soon and bless you with your next cut!</p>
-        </div>
-        <div style="text-align: center; margin-top: 10px;">
-            <img src="imgs/shaheer.jpg" alt="Shaheer">
-        </div>
-    </div>
-    </section>
 
-    <h4 id="services" style="margin-top: 20px;">Services</h4>
-    <div id="container">
-        <div>
-            <h2>A: $15</h2>
-            <h3>Haircut</h3>
-        </div>
-        <div>
-            <h2>B: $20</h2>
-            <h3>Haircut + Beard / Shave</h3>
-        </div>
-        <div>
-            <h2>C: $22</h2>
-            <h3>Haircut + Beard + Eyebrows</h3>
+    <!-- About me - picture on the left and description on the right -->
+    <div class="container text-center" id="about" style="margin-top: 20px; color: white;">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-5">
+                <figure class="figure">
+                    <img src="imgs/shaheer.jpg" class="figure-img img-fluid rounded" alt="Shaheer">
+                    <figcaption class="figure-caption">Shaheer Siddiqi, Founder</figcaption>
+                </figure>
+            </div>
+            <div class="col-5" style="justify-content: center; align-items: center;">
+                <h2 class="display-6">About Me</h2>
+                <p class="lead mb-4">Hi, I'm Shaheer aka SiddCutz! I'm currently an incoming freshman at Rutgers,
+                    New
+                    Brunswick. I have
+                    been
+                    slowly but surely honing my barber skills for the past 4 years and I decided to start my own
+                    business! I
+                    welcome all people looking to get a fresh cut! I offer a variety of services and packages that you
+                    can
+                    check out and decide which is best for you! I hope to see you soon and bless you with your next cut!
+                </p>
+            </div>
         </div>
     </div>
 
-    <br>
-    <h4 style="margin-top: 20px;">Final Products</h4>
-    <div style="text-align: center;">
-        <img src="imgs/hc1.jpg" alt="Haircut 1">
-        <img src="imgs/hc2.jpg" alt="Haircut 2">
-        <img src="imgs/hc3.jpg" alt="Haircut 3">
-        <img src="imgs/hc4.jpg" alt="Haircut 4">
+    <!-- Services - Make a card for each one -->
+    <div class="div" id="services" style="margin-top: 20px; text-align: center;">
+        <h2 class="display-6" style="color: white">Services</h2>
+        <div class="row justify-content-center align-items-wrap">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bronze</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">$15</h6>
+                        <p class="card-text">Haircut</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Silver</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">$20</h6>
+                        <p class="card-text">Haircut + Beard / Shave</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Gold</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">$22</h6>
+                        <p class="card-text">Haircut + Beard + Eyebrows</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
-        <a href="https://www.instagram.com/siddcutz/"><img class="icon" src="imgs/ig.png"></a>
+
+    <!-- Media - show pictures + link social media -->
+    <div class="div">
+        <h2 class="display-6" style="margin-top: 20px; color: white; text-align: center;">Final Products</h2>
+        <div class="row justify-content-center align-items-center">
+
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc1.jpg" class="figure-img img-fluid rounded" alt="Haircut 1">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc2.jpg" class="figure-img img-fluid rounded" alt="Haircut 2">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc3.jpg" class="figure-img img-fluid rounded" alt="Haircut 3">
+                </figure>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc1.jpg" class="figure-img img-fluid rounded" alt="Haircut 1">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc2.jpg" class="figure-img img-fluid rounded" alt="Haircut 2">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc3.jpg" class="figure-img img-fluid rounded" alt="Haircut 3">
+                </figure>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc1.jpg" class="figure-img img-fluid rounded" alt="Haircut 1">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc2.jpg" class="figure-img img-fluid rounded" alt="Haircut 2">
+                </figure>
+            </div>
+            <div class="col-3">
+                <figure class="figure"><img src="imgs/hc3.jpg" class="figure-img img-fluid rounded" alt="Haircut 3">
+                </figure>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-1" style="margin-top: 10px; margin-bottom: 10px;">
+                <a href="https://www.instagram.com/siddcutz/"><img class="icon" src="imgs/ig.png"></a>
+            </div>
+        </div>
+
     </div>
 
 </body>
