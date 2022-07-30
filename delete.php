@@ -31,16 +31,16 @@
                 header('Location: admin.php');
 
                 // //Message to Client
-                // $message = 'Your appointment on ' . $date . ' at ' . $time . ' has been cancelled.';
-                // $client = new Client($account_sid, $auth_token);
-                // $client->messages->create(
-                //     // Where to send a text message (your cell phone?)
-                //     $number,
-                //     array(
-                //         'from' => $twilio_number,
-                //         'body' => $message
-                //     )
-                // );
+                $message = 'Your appointment on ' . $date . ' at ' . $time . ' has been cancelled.';
+                $client = new Client($account_sid, $auth_token);
+                $client->messages->create(
+                    // Where to send a text message (your cell phone?)
+                    $number,
+                    array(
+                        'from' => $twilio_number,
+                        'body' => $message
+                    )
+                );
 
                 // echo '<script>alert("Successfully deleted appointment - the client will receive a text update");</script>';
             } else {
