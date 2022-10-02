@@ -1,7 +1,14 @@
 <?php
-// Include config file
+// Start session and check if already logged in
+session_start(); 
+if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true){
+    header("location: admin.php");
+    exit;
+}
+
+// Include config file + information
 require_once "config.php";
- 
+
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
@@ -46,6 +53,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     mysqli_stmt_bind_result($stmt, $id, $username, $db_password);
                     if(mysqli_stmt_fetch($stmt)){
                         if(strcmp($password, $db_password)==0){                      
+                            session_start();
+                            // Store data in session variables
+                            $_SESSION["logged_in"] = true;
                             // Redirect user to welcome page
                             header("location: admin.php");
                         } else{
@@ -86,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a class="nav-link active" href="index.html">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="login.html">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
         </li>
         <li class="nav-item">
             <a class="nav-link disabled">Create Account</a>

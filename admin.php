@@ -1,17 +1,18 @@
 <?php
-    $con=mysqli_connect("localhost","root","","siddcutz");
-    // Check connection
-    if (mysqli_connect_errno())
-    {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
+session_start();
+if(!isset( $_SESSION['logged_in']) || empty($_SESSION['logged_in']) || $_SESSION['logged_in']==false) {
+    header("location: login.php");
+    exit;
+}
+// Include config file
+require_once "config.php";
 
-    $result = mysqli_query($con,"SELECT * FROM appointment WHERE DATE(date) >= CURDATE() ORDER BY date, 
-    CASE when time = '8am' then '1' when time = '9am' then '2' when time = '10am' then '3' when time = '11am' 
-    then '4' when time = '12pm' then '5' when time = '1pm' then '6' when time = '2pm' then '7' when time = '3pm' 
-    then '8' when time = '4pm' then '9' when time = '5pm' then '10' when time = '6pm' then '11' when time = '7pm' 
-    then '12' when time = '8pm' then '13' ELSE time END ASC;");
-    $availability = mysqli_query($con, "SELECT * FROM availability WHERE date >= CURDATE() ORDER BY date;");
+$result = mysqli_query($link,"SELECT * FROM appointment WHERE DATE(date) >= CURDATE() ORDER BY date, 
+CASE when time = '8am' then '1' when time = '9am' then '2' when time = '10am' then '3' when time = '11am' 
+then '4' when time = '12pm' then '5' when time = '1pm' then '6' when time = '2pm' then '7' when time = '3pm' 
+then '8' when time = '4pm' then '9' when time = '5pm' then '10' when time = '6pm' then '11' when time = '7pm' 
+then '12' when time = '8pm' then '13' ELSE time END ASC;");
+$availability = mysqli_query($link, "SELECT * FROM availability WHERE date >= CURDATE() ORDER BY date;");
 ?>
 <!DOCTYPE html>
 <style>
@@ -42,7 +43,7 @@
                 <a class="nav-link active" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <a class="nav-link" href="logout.php">Logout</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled">Create Account</a>
@@ -169,7 +170,7 @@
                     </tr>
             <?php
                 }
-                mysqli_close($con);
+                mysqli_close($link);
             ?>
         </table>
         <br>
