@@ -30,17 +30,27 @@
 </style>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <meta charset="utf-8">
     </head>
-    <div class="topnav">
-        <a href="index.html">Home</a>
-        <div class="topnav-right">
-          <a class="active">Admin Portal</a>
-        </div>
-    </div>    
-    <h1>Welcome to Admin Portal</h1>
-        <table align="center" border="1px" style="width:1000px; line-height:40px;">
+    <body>
+        <!-- Nav bar -->
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Create Account</a>
+            </li>
+        </ul>
+        <h1 style="text-align: center;">Welcome to Admin Portal</h1>
+        <!-- Appointments Table -->
+        <table class="table table-bordered" align="center" border="1px" style="width:1000px; line-height:40px; text-align: center;">
             <tr>
                 <th colspan="8"><h2>Appointments</h2></th>
             </tr>
@@ -72,8 +82,10 @@
             ?>
         </table>
         <br>
+
+        <!-- Record Availability Form -->
         <form action="http://localhost/SiddCutz/recordAvail.php" method="post" style="text-align: center;">
-            <table align="center" border="1px">
+            <table class="table table-bordered" align="center" border="1px">
                 <tr>
                     <th colspan="15"><h2>Select Availability</h2></th>
                 </tr>
@@ -115,7 +127,8 @@
         </form>
         <br>
 
-        <table align="center" border="1px">
+        <!-- Availability Table -->
+        <table class="table table-bordered" align="center" border="1px" style="text-align: center;">
             <tr>
                 <th colspan="14"><h2>Availability</h2></th>
             </tr>
@@ -145,7 +158,12 @@
                             $times = array("8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm");
                             foreach ($times as $time)
                             {
-                            if ($row[$time] == "2") {echo "<td class='green'></td>";} elseif ($row[$time] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>";
+                                if ($row[$time] == "2") 
+                                    {echo "<td style='background-color: rgb(51, 255, 51);'></td>";} 
+                                elseif ($row[$time] == "1") 
+                                    {echo "<td style='background-color: rgb(255, 153, 51);'></td>";}
+                                else 
+                                    {echo "<td style='background-color: rgb(255, 51, 51);'></td>";}
                             }
                         ?>
                     </tr>
@@ -155,6 +173,7 @@
             ?>
         </table>
         <br>
+    </body>
 </html>
 <script>
     const times = ["8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm"];

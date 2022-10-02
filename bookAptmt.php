@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         <meta charset="utf-8">
         <style>
             /* Chrome, Safari, Edge, Opera */
@@ -17,72 +18,116 @@
             }
         </style>
     </head>
-    <body>
-        <div class="topnav">
-            <a href="index.html">Home</a>
-            <div class="topnav-right">
-              <a href="login.html">Login</a>
-              <a>Create Account</a>
+    <body style="background-color: rgb(44, 44, 44); ">
+
+        <!-- Nav bar -->
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled">Create Account</a>
+            </li>
+        </ul>
+        
+        <!-- Services - Make a card for each one -->
+        <div class="div" id="services" style="margin-top: 20px; text-align: center;">
+            <h2 class="display-6" style="color: white">Services</h2>
+            <div class="row justify-content-center align-items-wrap">
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Bronze</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$15</h6>
+                            <p class="card-text">Haircut</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Silver</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$20</h6>
+                            <p class="card-text">Haircut + Beard / Shave</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Gold</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">$22</h6>
+                            <p class="card-text">Haircut + Beard + Eyebrows</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <h4 id="services" style="margin-top: 20px;">Services</h4>
-        <div id="container">
-            <div>
-                <h2>A: $15</h2>
-                <h3>Haircut</h3>
-            </div>
-            <div>
-                <h2>B: $20</h2>
-                <h3>Haircut + Beard / Shave</h3>
-            </div>
-            <div>
-                <h2>C: $22</h2>
-                <h3>Haircut + Beard + Eyebrows</h3>
-            </div>
+        
+        <br>
+        <div class="row justify-content-center">
+
+        <div class="card" style="text-align: center; place-items: center; width: 500px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Book an Appointment</h5>
+
+        <form name="bookingForm" action="http://localhost/SiddCutz/recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
+            <div class="row justify-content-center">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" class="form-control" style="width: 300px; text-align: center" name="name" required>
+            
         </div>
         <br>
-        <form name="bookingForm" action="http://localhost/SiddCutz/recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
-            <!-- <label for="name">Name:</label> -->
-            <input type="text" name="name" placeholder="Name" required><br>
-            <br>
-
-            <!-- <label for="number">Phone Number:</label> -->
-            <input type="number" name="number"  placeholder="Phone Number" required><br>
-            <br>
-
+            <div class="row justify-content-center">
+            <label for="number" class="form-label">Phone Number:</label>
+            <input type="number" id="number" class="form-control" style="width: 200px; text-align: center" name="number" required>
+            
+</div>
+<br>
             <!-- <label for="email">Email:</label>
             <input type="email" name="email" placeholder="Email" required><br>
             <br> -->
 
-            <label for="service">Service:</label><br>
-            <input type="radio" id="a" name="service" value="a" required>
-              <label for="a" style="margin-right: 20px;">A</label><br>
-            <input type="radio" id="b" name="service" value="b">
-              <label for="b" style="margin-right: 20px;">B</label><br>
-            <input type="radio" id="c" name="service" value="c">
-              <label for="c" style="margin-right: 20px;">C</label><br>
-            <br>
+            <div class="form-check">
+                <label for="service" class="form-label">Service:</label><br>
+                <input type="radio" id="a" name="service" value="a" required>
+                  <label for="a" style="margin-right: 20px;">A</label><br>
+                <input type="radio" id="b" name="service" value="b">
+                  <label for="b" style="margin-right: 20px;">B</label><br>
+                <input type="radio" id="c" name="service" value="c">
+                  <label for="c" style="margin-right: 20px;">C</label><br>
+                <br>
+            </div>
 
-            <label for="location">Location:</label><br>
-            <input type="radio" id="parsippany" name="location" value="parsippany" required>
-              <label for="parsippany">Parsippany, NJ</label><br>
-            <!-- <input type="radio" id="nb" name="location" value="nb">
-              <label for="nb">New Brunswick, NJ</label><br>
-            <input type="radio" id="house" name="location" value="house">
-              <input type="text" for="house" placeholder="House call (enter address)"><br> -->
-            <br>
+            <div class="form-check">
+                <label for="location" class="form-label">Location:</label><br>
+                <input type="radio" id="parsippany" name="location" value="parsippany" required>
+                  <label for="parsippany">Parsippany, NJ</label><br>
+                <!-- <input type="radio" id="nb" name="location" value="nb">
+                  <label for="nb">New Brunswick, NJ</label><br>
+                <input type="radio" id="house" name="location" value="house">
+                  <input type="text" for="house" placeholder="House call (enter address)"><br> -->
+                <br>
+            </div>
             
-            <label for="date">Date:</label>
-            <input id="date" type="date" name="date" onchange="onDateChange(value)" required><br>
+            <label for="date" class="form-label">Date:</label>
+            <input id="date" type="date" name="date" onchange="onDateChange(value)" required>
             <br>
 
             <div id="availabilities"></div>
             <br>
 
-            <input type="submit" value="Book Appointment"><br><br>
+            <input type="submit" class="btn btn-primary" value="Book Appointment"><br>
     
         </form><br>
-        <p>*By clicking "Book Appointment" I consent to paying the listed price for the selected service*</p>
+                            </div>
+                </div>
+                    </div>
+<br>
+        <p style="text-align: center; color: white">*By clicking "Book Appointment" I consent to paying the listed price for the selected service*</p>
     </body>
 </html>
 <script>
