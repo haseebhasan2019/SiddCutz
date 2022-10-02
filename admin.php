@@ -48,7 +48,7 @@
                 <a class="nav-link disabled">Create Account</a>
             </li>
         </ul>
-        <h1>Welcome to Admin Portal</h1>
+        <h1 style="text-align: center;">Welcome to Admin Portal</h1>
         <!-- Appointments Table -->
         <table class="table table-bordered" align="center" border="1px" style="width:1000px; line-height:40px; text-align: center;">
             <tr>
@@ -146,7 +146,7 @@
                 <td>5:00pm</td>
                 <td>6:00pm</td>
                 <td>7:00pm</td>
-                <td style='background-color: rgb(51, 255, 51);'>8:00pm</td>
+                <td>8:00pm</td>
             </tr>
             <?php
                 while($row = mysqli_fetch_array($availability))
@@ -158,7 +158,12 @@
                             $times = array("8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm");
                             foreach ($times as $time)
                             {
-                            if ($row[$time] == "2") {echo "<td style='background-color: rgb(51, 255, 51);'></td>";} elseif ($row[$time] == "1") echo "<td class='yellow'></td>"; else echo "<td class='red'></td>";
+                                if ($row[$time] == "2") 
+                                    {echo "<td style='background-color: rgb(51, 255, 51);'></td>";} 
+                                elseif ($row[$time] == "1") 
+                                    {echo "<td style='background-color: rgb(255, 153, 51);'></td>";}
+                                else 
+                                    {echo "<td style='background-color: rgb(255, 51, 51);'></td>";}
                             }
                         ?>
                     </tr>
