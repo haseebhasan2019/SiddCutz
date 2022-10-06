@@ -85,7 +85,7 @@ $availability = mysqli_query($link, "SELECT * FROM availability WHERE date >= CU
         <br>
 
         <!-- Record Availability Form -->
-        <form action="http://localhost/SiddCutz/recordAvail.php" method="post" style="text-align: center;">
+        <form action="recordAvail.php" method="post" style="text-align: center;">
             <table class="table table-bordered" align="center" border="1px">
                 <tr>
                     <th colspan="15"><h2>Select Availability</h2></th>

@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Book an Appointment</h5>
 
-        <form name="bookingForm" action="http://localhost/SiddCutz/recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
+        <form name="bookingForm" action="recordAptmt.php" onsubmit="return validateForm()" method="post" style="text-align: center;">
             <div class="row justify-content-center">
             <label for="name" class="form-label">Name:</label>
             <input type="text" id="name" class="form-control" style="width: 300px; text-align: center" name="name" required>
